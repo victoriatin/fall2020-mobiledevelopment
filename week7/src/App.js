@@ -1,36 +1,57 @@
 import React, { Component } from "react";
 import "./App.css";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: 0,
+      countera: 0,
+      counterb:0
     };
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>Exercise Tracker Application - Running Laps</p>
-          <p>Count: {this.state.counter}</p>
-          <button
+          <h1>Exercise Tracker</h1>
+          <div className="wrkout">
+          <h2>Lap Counter</h2>
+          <h3>Count: {this.state.countera}</h3>
+          <button class="button"
             onClick={() => {
-              this.setState({ counter: this.state.counter + 1 });
+              this.setState({ countera: this.state.countera + 1 });
             }}
           >
             Add Lap
           </button>
-          <button
+          <button class="button"
             onClick={() => {
-              this.setState({ counter: 0 });
+              this.setState({ countera: 0 });
             }}
           >
             Reset
           </button>
-        </header>
+        </div>
+        <div className="wrkout">
+          <h2>Rep Counter</h2>
+          <h3>Count: {this.state.counterb}</h3>
+          <button class="button"
+            onClick={() => {
+              this.setState({ counterb: this.state.counterb + 1 });
+            }}
+          >
+            Add Rep
+          </button>
+          <button class="button"
+            onClick={() => {
+              this.setState({ counterb: 0 });
+            }}
+          >
+            Reset
+          </button>
+        </div>
       </div>
     );
   }
