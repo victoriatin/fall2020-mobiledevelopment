@@ -1,0 +1,38 @@
+body {
+  background: #333;
+  margin: 0;
+  display: grid;
+  padding: 10px;
+  place-items: center;
+}
+
+.box {
+  background: white;
+  place-items: center;
+  text-align: center;
+  border: 1px solid black;
+  width: 500px;
+}
+h1 {
+  font-size: 20px;
+}
+p {
+  font-size: 18px;
+}
+.content {
+  padding-top: 10px;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button {
+  background: blue;
+  border: 1px solid transparent;
+  color: white;
+  margin-right: 5px;
+  padding: 10px;
+}
