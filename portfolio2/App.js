@@ -9,6 +9,7 @@ import {state, reducer} from './components/ApplicationState';
 import ShowCount from './components/ShowCount';
 import DecreaseCount from './components/DecreaseCount';
 import ResetCount from './components/ResetCount';
+import LogWorkout from './components/LoggedWorkout';
 
 function LoginScreen(props) {
   // Track the state of the loggedIn variable
@@ -29,6 +30,7 @@ function LoginScreen(props) {
  return (
    <View style={styles.container}>
      <ImageBackground source={require('./logback.jpg')} style={styles.bimage}>
+     <Text style={styles.headerText2}>Fitness Tracker App</Text>
      {
        loggedIn ? (
          <View>
@@ -54,7 +56,7 @@ function LoginScreen(props) {
 function HomeScreen(props) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <ImageBackground source={require('./barbel.jpg')} style={styles.bimage}>
+       <ImageBackground source={require('./barbel.jpg')} style={styles.bimage}>
       <Text style={styles.headerText}>Home</Text>
       <Button
         title="Running Laps Tracker"
@@ -74,6 +76,11 @@ function HomeScreen(props) {
         <Button
         title="Jump Rope Tracker"
         onPress={() => props.navigation.navigate('Jumprope')}
+        style={styles.buttonStyle}
+      />
+      <Button
+        title="Log Workouts"
+        onPress={() => props.navigation.navigate('Finish')}
         style={styles.buttonStyle}
       />
       </ImageBackground>
@@ -110,7 +117,7 @@ function Exercise2Screen(props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <ImageBackground source={require('./weights.jpg')} style={styles.bimage}>
-      <Text style={styles.headerText}>Weight Reps Tracker</Text>
+      <Text style={styles.headerText2}>Weight Reps Tracker</Text>
       <ShowCount currentState={currentState} />
         <Button
         title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
@@ -134,8 +141,8 @@ function Exercise3Screen(props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <ImageBackground source={require('./pushups.jpg')} style={styles.bimage}>
-      <Text style={styles.headerText2}>Pushups Tracker</Text>
-      <ShowCount currentState={currentState} />
+      <Text style={styles.headerText2}>Pushup Tracker</Text>
+       <ShowCount currentState={currentState} />
         <Button
         title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
         <DecreaseCount dispatch={dispatch} />
@@ -178,6 +185,20 @@ function Exercise4Screen(props) {
     </View>
   );
 }
+function FinishScreen(props) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ImageBackground source={require('./barbel.jpg')} style={styles.bimage}>
+    <LogWorkout />
+<Button
+        title="Back to Home"
+        onPress={() => props.navigation.navigate('Home')}
+        style={styles.buttonStyle}
+      />
+      </ImageBackground>
+    </View>
+  );
+}
 
 const Drawer = createDrawerNavigator();
 
@@ -191,6 +212,7 @@ function Home() {
         <Drawer.Screen name="Reps" component={Exercise2Screen} />
         <Drawer.Screen name="Pushups" component={Exercise3Screen} />
         <Drawer.Screen name="Jumprope" component={Exercise4Screen} />
+        <Drawer.Screen name="Finish" component={FinishScreen} />
         </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -218,13 +240,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 20,
   },
-  headerText2: {
-    color: 'white',
-   fontSize: 20,
-   fontWeight: "bold",
-   textAlign: "center",
-   margin: 20,
- },
+   headerText2: {
+     color: 'white',
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 20,
+  },
   buttonStyle: {
     marginTop :30,
   },
