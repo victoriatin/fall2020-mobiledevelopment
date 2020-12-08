@@ -28,6 +28,7 @@ function LoginScreen(props) {
 
  return (
    <View style={styles.container}>
+     <ImageBackground source={require('./logback.jpg')} style={styles.bimage}>
      {
        loggedIn ? (
          <View>
@@ -45,6 +46,7 @@ function LoginScreen(props) {
          </View>
        )
      }
+     </ImageBackground>
    </View>
  );
 }
@@ -52,6 +54,7 @@ function LoginScreen(props) {
 function HomeScreen(props) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <ImageBackground source={require('./barbel.jpg')} style={styles.bimage}>
       <Text style={styles.headerText}>Home</Text>
       <Button
         title="Running Laps Tracker"
@@ -73,6 +76,7 @@ function HomeScreen(props) {
         onPress={() => props.navigation.navigate('Jumprope')}
         style={styles.buttonStyle}
       />
+      </ImageBackground>
     </View>
   );
 }
