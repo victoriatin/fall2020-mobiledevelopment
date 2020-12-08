@@ -1,11 +1,14 @@
 import 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { Card, Button, Input } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import ButtonExample from './components/ButtonExample';
 import InputExample from './components/InputExample';
+import {state, reducer} from './components/ApplicationState';
+import ShowCount from './components/ShowCount';
+import DecreaseCount from './components/DecreaseCount';
+import ResetCount from './components/ResetCount';
 
 function LoginScreen(props) {
   // Track the state of the loggedIn variable
@@ -75,11 +78,19 @@ function HomeScreen(props) {
 }
 
 function Exercise1Screen(props) {
+  const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={styles.headerText}>Running Laps Tracker</Text>
-      <ButtonExample />
+      <ShowCount currentState={currentState} />
+        <Button
+        title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
+        <DecreaseCount dispatch={dispatch} />
+        <ResetCount dispatch={dispatch} />
+        <Card>
       <InputExample />
+      </Card>
+      <Card.Divider />
       <Button
         title="Back to Home"
         onPress={() => props.navigation.navigate('Home')}
@@ -90,11 +101,19 @@ function Exercise1Screen(props) {
   );
 }
 function Exercise2Screen(props) {
+  const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={styles.headerText}>Weight Reps Tracker</Text>
-      <ButtonExample />
+      <ShowCount currentState={currentState} />
+        <Button
+        title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
+        <DecreaseCount dispatch={dispatch} />
+        <ResetCount dispatch={dispatch} />
+        <Card>
       <InputExample />
+      </Card>
+      <Card.Divider />
       <Button
         title="Back to Home"
         onPress={() => props.navigation.navigate('Home')}
@@ -105,11 +124,19 @@ function Exercise2Screen(props) {
   );
 }
 function Exercise3Screen(props) {
+  const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={styles.headerText}>Pushups Tracker</Text>
-      <ButtonExample />
+      <ShowCount currentState={currentState} />
+        <Button
+        title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
+        <DecreaseCount dispatch={dispatch} />
+        <ResetCount dispatch={dispatch} />
+        <Card>
       <InputExample />
+      </Card>
+      <Card.Divider />
       <Button
         title="Back to Home"
         onPress={() => props.navigation.navigate('Home')}
@@ -121,11 +148,19 @@ function Exercise3Screen(props) {
 }
 
 function Exercise4Screen(props) {
+  const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={styles.headerText}>Jump Rope Tracker</Text>
-      <ButtonExample />
+      <ShowCount currentState={currentState} />
+        <Button
+        title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
+        <DecreaseCount dispatch={dispatch} />
+        <ResetCount dispatch={dispatch} />
+        <Card>
       <InputExample />
+      </Card>
+      <Card.Divider />
       <Button
         title="Back to Home"
         onPress={() => props.navigation.navigate('Home')}
