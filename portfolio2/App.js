@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState, useReducer } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { Card, Button, Input } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -81,6 +81,7 @@ function Exercise1Screen(props) {
   const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ImageBackground source={require('./track.jpg')} style={styles.bimage}>
       <Text style={styles.headerText}>Running Laps Tracker</Text>
       <ShowCount currentState={currentState} />
         <Button
@@ -96,7 +97,7 @@ function Exercise1Screen(props) {
         onPress={() => props.navigation.navigate('Home')}
         style={styles.buttonStyle}
       />
-   
+   </ImageBackground>
     </View>
   );
 }
@@ -104,6 +105,7 @@ function Exercise2Screen(props) {
   const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ImageBackground source={require('./weights.jpg')} style={styles.bimage}>
       <Text style={styles.headerText}>Weight Reps Tracker</Text>
       <ShowCount currentState={currentState} />
         <Button
@@ -119,7 +121,7 @@ function Exercise2Screen(props) {
         onPress={() => props.navigation.navigate('Home')}
         style={styles.buttonStyle}
       />
-  
+  </ImageBackground>
     </View>
   );
 }
@@ -127,7 +129,8 @@ function Exercise3Screen(props) {
   const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={styles.headerText}>Pushups Tracker</Text>
+      <ImageBackground source={require('./pushups.jpg')} style={styles.bimage}>
+      <Text style={styles.headerText2}>Pushups Tracker</Text>
       <ShowCount currentState={currentState} />
         <Button
         title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
@@ -142,7 +145,7 @@ function Exercise3Screen(props) {
         onPress={() => props.navigation.navigate('Home')}
         style={styles.buttonStyle}
       />
-    
+    </ImageBackground>
     </View>
   );
 }
@@ -151,7 +154,8 @@ function Exercise4Screen(props) {
   const [currentState, dispatch] = useReducer(reducer, state);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={styles.headerText}>Jump Rope Tracker</Text>
+      <ImageBackground source={require('./jumprope.jpg')} style={styles.bimage}>
+      <Text style={styles.headerText2}>Jump Rope Tracker</Text>
       <ShowCount currentState={currentState} />
         <Button
         title="Increase" onPress={() => { dispatch({"type": "increment"}) } } />
@@ -166,7 +170,7 @@ function Exercise4Screen(props) {
         onPress={() => props.navigation.navigate('Home')}
         style={styles.buttonStyle}
       />
-   
+   </ImageBackground>
     </View>
   );
 }
@@ -210,7 +214,19 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 20,
   },
+  headerText2: {
+    color: 'white',
+   fontSize: 20,
+   fontWeight: "bold",
+   textAlign: "center",
+   margin: 20,
+ },
   buttonStyle: {
     marginTop :30,
-  }
+  },
+  bimage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+   }
 });
